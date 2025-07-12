@@ -17,7 +17,7 @@ function TodoForm() {
             placeholder='Write todo..'
             value={todo}
             onChange = {(e) => setTodo(e.target.value)}
-            className='bg-purple-400 w-xl border-purple-800 mr-1 rounded-2xl'
+            className='bg-purple-400 w-xl border-purple-800 rounded-2xl'
         />
         <button type = 'submit' className='bg-gray-500' >Add</button>
     </form>

@@ -6,21 +6,22 @@ function TodoForm() {
 
     const add = (e) => {
         e.preventDefault()
+        if(!todo) return
         addTodo({todo, completed:false})
         setTodo('')
     }
 
   return (
-    <form onSubmit = {add} className='flex'>
+    <div className='flex'>
         <input 
             type="text"
             placeholder='Write todo..'
             value={todo}
             onChange = {(e) => setTodo(e.target.value)}
-            className='bg-purple-400 w-xl border-purple-800 rounded-2xl'
+            className='bg-[#a893d8] w-xl  rounded-2xl mr-2 text-black'
         />
-        <button type = 'submit' className='bg-gray-500' >Add</button>
-    </form>
+        <button onClick = {add} className='text-red-500 ' >Add</button>
+    </div>
   )
 }
 

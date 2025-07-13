@@ -2,11 +2,10 @@ import { useState, useEffect } from 'react'
 import { ToDoProvider } from './contexts/TodoContext'
 import TodoForm from './components/TodoForm'
 import TodoItem from './components/TodoItem'
-// import './App.css'
 function App() {
   const [todos, setTodos] = useState([])
-
-  const addTodo = (todo) => {
+  const [light, setLight] = useState(true)
+  const addTodo = (todo)  => {
     setTodos((prev) => [{id: Date.now(),...todo}, ...prev])
   }
 
@@ -35,12 +34,14 @@ function App() {
   
   return (
     <ToDoProvider value = {{todos, addTodo, updateTodo, deleteTodo, statusUpdate}}>
+      <div className={light ? 'bg-white text-black' : 'bg-black text-white'}>
+      <button onClick = {() => light?setLight(false):setLight(true)} className='text-black absolute top-2 right-2 '>{ light ? '🌙' : '☀️'}</button>
       <div className='flex flex-col justify-center items-center w-screen h-screen  ml-1'>
-        <h2 className='mb-1 text-2xl bold'>Manage  Your Todos </h2>
+        <h2 className='mb-2 text-3xl bold'>Manage  Your Todos </h2>
           <div>
             <TodoForm/>
           </div>
-          <div className='mt-2 text-xl bg-purple-400 w-xl rounded-2xl' >
+          <div className='mt-2 text-xl w-xl rounded-2xl' >
             {todos.map((todo) => (
               <div key={todo.id}
               className='w-full'>
@@ -50,7 +51,7 @@ function App() {
             
           </div>
       </div>
-      
+      </div>
     </ToDoProvider>
   )
 }

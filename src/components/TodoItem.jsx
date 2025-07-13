@@ -12,14 +12,13 @@ function TodoItem({ todo }) {
     setIsTodoEditable(false)
   }
   const toggleCompleted = () => {
-    console.log(todo.id);
     statusUpdate(todo.id)
   }
 
   return (
       <div
-          className={`flex border border-black/10 rounded-lg px-3 py-1.5 gap-x-3 duration-300  text-black ${
-              todo.completed ? "bg-[#75ca2a]" : "bg-purple"
+          className={`flex border border-black/10 rounded-lg px-3 py-1.5 mb-1.5 gap-x-3 duration-300  text-black ${
+              todo.completed ? "bg-[#75ca2a]" : "bg-[#a893d8]"
           }`}
       >
           <input
@@ -39,7 +38,7 @@ function TodoItem({ todo }) {
           />
           {/* Edit, Save Button */}
           <button
-              className="inline-flex w-8 h-8 rounded-lg text-sm border justify-center items-center bg-gray-50 shrink-0 disabled:opacity-50"
+              className="inline-flex w-8 h-8 rounded-lg text-sm border justify-center items-center bg-gray-50 disabled:opacity-50"
               onClick={() => {
                   if (todo.completed) return;
 
